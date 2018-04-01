@@ -1,0 +1,80 @@
+
+<html>
+<head></head>
+
+<script src="master_data.js"></script>
+<script>
+
+	function executeCode(indexStr) {
+
+		console.clear();
+
+		var index = parseInt(indexStr);
+
+		var idStr = "functionCode" + indexStr;	
+		//console.log(idStr);
+
+		var code = "\n'use strict';\n" + document.getElementById(idStr).value;
+		//console.log(code);
+
+		var f = new Function(...w1Problems.problems[index].parameters, code);
+		//console.log(f.toString());
+
+		var testData = w1Problems.problems[index].testData;
+
+		var count = 0;
+
+		for (var tdIdStr in testData) {
+			var tdIdx = parseInt(tdIdStr);
+			var testDataObj = testData[tdIdx];
+
+			var data2use = testDataObj.parameters;
+
+			var actualResult = f.apply(null, data2use);
+			if (actualResult !== testDataObj.expectedResult) {
+				count++;
+				console.log('\nfailed test for data: ' + JSON.stringify(data2use));
+			}
+		}
+
+		if (count === 0) {
+			console.log(`\nPASS: all ${testData.length} test cases succeeded!`);
+		}
+		else {
+			console.log(`\nFAIL: ${count} of ${testData.length} test cases failed`);
+		}
+	}
+
+</script>
+
+<body>
+	<h1><script>document.write(w1Problems.sectionName);</script></h1>
+	<div id="problemArea">
+	<script>
+		for (var indexStr in w1Problems.problems) {
+
+			var problemObj = w1Problems.problems[ parseInt(indexStr)  ];
+
+			if (!problemObj) continue;
+
+			document.write("<h2>" + problemObj.title + "</h2>");
+			document.write("<p>" + problemObj.description + "</p>");
+
+			var functionSignature = 'function ' + problemObj.functionName + "(" + problemObj.parameters.join(",") + ")";
+			//console.log(functionSignature);	
+
+			document.write("<p>" + functionSignature + " { <br/>");	
+
+			var idStr = "functionCode" + indexStr;	
+			//console.log(idStr);	
+
+			document.write("<textarea id=\"" + idStr + "\" cols=\"60\" rows=\"10\"></textarea><br/>}</p>");
+
+			document.write("<br/><input type=\"button\" onClick=\"executeCode(" + indexStr + ")\" value=\"test\" /><br/>");
+
+			document.write("<br/><hr/>");
+		}
+	</script>
+	</div>
+</body>
+</html>
