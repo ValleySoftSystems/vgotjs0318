@@ -13,21 +13,11 @@
 
 		var idStr = "functionCode" + indexStr;	
 		//console.log(idStr);
-		var code = document.getElementById(idStr).value;
+
+		var code = "\n'use strict';\n" + document.getElementById(idStr).value;
 		//console.log(code);
-		var f = null;
 
-		switch (idStr) {
-
-			case "functionCode0":
-				f = new Function("vacation", "weekday", code);
-				break;
-
-			case "functionCode1":
-				f = new Function("aSmile", "bSmile", code);
-				break;
-		}
-
+		var f = new Function(...w1Problems.problems[index].parameters, code);
 		//console.log(f.toString());
 
 		var testData = w1Problems.problems[index].testData;
@@ -43,15 +33,15 @@
 			var actualResult = f.apply(null, data2use);
 			if (actualResult !== testDataObj.expectedResult) {
 				count++;
-				console.log('failed test for data: ' + JSON.stringify(data2use));
+				console.log('\nfailed test for data: ' + JSON.stringify(data2use));
 			}
 		}
 
 		if (count === 0) {
-			console.log('SUCCESS: GOOD JOB!');
+			console.log(`\nPASS: all ${testData.length} test cases succeeded!`);
 		}
 		else {
-			console.log(`Failed in ${count} tests`);
+			console.log(`\nFAIL: ${count} of ${testData.length} test cases failed`);
 		}
 	}
 
@@ -61,24 +51,28 @@
 	<h1><script>document.write(w1Problems.sectionName);</script></h1>
 	<div id="problemArea">
 	<script>
-		for (var index in w1Problems.problems) {
+		for (var indexStr in w1Problems.problems) {
 
-			var problemObj = w1Problems.problems[ parseInt(index)  ];
+			var problemObj = w1Problems.problems[ parseInt(indexStr)  ];
 
 			if (!problemObj) continue;
 
 			document.write("<h2>" + problemObj.title + "</h2>");
 			document.write("<p>" + problemObj.description + "</p>");
 
-			document.write("<p>" + problemObj.functionSignature + " { <br/>");	
-			var idStr = "functionCode" + index;	
+			var functionSignature = 'function ' + problemObj.functionName + "(" + problemObj.parameters.join(",") + ")";
+			//console.log(functionSignature);	
+
+			document.write("<p>" + functionSignature + " { <br/>");	
+
+			var idStr = "functionCode" + indexStr;	
 			//console.log(idStr);	
-			document.write("<textarea id=\"" + idStr + "\" cols=\"60\" rows=\"10\"></textarea></p>");
 
-			document.write("}<br/><input type=\"button\" onClick=\"executeCode('" + index + 
-									"')\" value=\"submit\" /><br/>");
+			document.write("<textarea id=\"" + idStr + "\" cols=\"60\" rows=\"10\"></textarea><br/>}</p>");
 
+			document.write("<br/><input type=\"button\" onClick=\"executeCode(" + indexStr + ")\" value=\"test\" /><br/>");
 
+			document.write("<br/><hr/>");
 		}
 	</script>
 	</div>
