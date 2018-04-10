@@ -1,0 +1,25 @@
+<!-- /* Given a string, if the string begins with "red" or "blue" return that color string, otherwise return the empty string.
+
+
+seeColor("redxx")  "red"
+seeColor("xxred")  ""
+seeColor("blueTimes")  "blue" */ -->
+<script>
+function seeColor(a){
+if(a.substring(0,3)=="red"){
+return "red";
+
+}
+if (a.substring(0,4)=="blue"){
+return "blue";
+}
+else{
+return "";
+}
+}
+console.log(seeColor("blackxx")); 
+console.log(seeColor("xxred"));
+console.log(seeColor("blueTimes"));
+</script>
+
+<!-- //Result: blue -->
