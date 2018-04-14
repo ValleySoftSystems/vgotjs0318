@@ -1,3 +1,7 @@
+/*Given a string input, return true/false to indicate whether it is balanced in terms of {} [] ()
+Ignore parts of the string that are enclosed with pair of "" (double quotes) and pair or single quotes ('')
+Also, if you encounter // --- then ignore that part of the string till a new-line char '\n' occurs*/
+
 function balancedString(str) {
     var strArr = str.split("");
     var arrCompareStack = [];
