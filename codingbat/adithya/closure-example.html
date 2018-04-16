@@ -1,0 +1,33 @@
+<html>
+<body>
+<script>
+    function c() {
+        var p = 10,
+            q = 40,
+            r = 22;
+        var z = function() {
+            console.log('hello');
+            p++;
+            console.log('world');
+            r *= p;
+            console.log(`p:${p}, r:${r}`);
+        }
+        return z;
+    }
+
+    function k() {
+        var f = c();
+        console.log('pinky');
+        f();
+        console.log('ponky');
+        c = null;
+        f();
+        console.log('donkey');
+        f = null;
+        console.log('monkey');
+    }
+
+    k();
+</script>
+</body>
+</html>
