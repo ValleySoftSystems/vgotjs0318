@@ -1,0 +1,103 @@
+<html>
+<body>
+<script>
+
+	var obj = {
+		x : 5, 
+		y : 6
+	}
+
+	function getCar() {
+		var state = parked;
+
+		var _startCar = function() { state = started; return state; }
+		var _changeGear = function() { state = moving; return state; }
+
+		return {
+			startCar : _startCar, 
+			changeGear : _changeGear
+		}
+	}
+
+
+// data + methods
+// data hiding
+// abstraction 
+function getCounter() {
+	// private data
+	var count = 0;
+
+	// private methods
+	var _incr = function() { count++; return count; }
+	var _decr = function() { count--; return count; }
+	var _reset = function() { count = 0; return count; }
+	var _set = function(v) { count = v; return count; }
+	var _value = function() { return count; }
+
+	return { // public methods
+		incr : _incr, 
+		decr : _decr, 
+		reset : _reset, 
+		sset : _set,
+		value : _value
+	}
+}
+
+var countUpCounter = getCounter(), // instances of class
+	countDownCounter = getCounter();
+
+countDownCounter.sset(10);
+console.log(countDownCounter.value());
+console.log(countDownCounter.decr());
+console.log(countDownCounter.decr());
+
+console.log(countUpCounter.value());
+console.log(countUpCounter.incr());
+console.log(countUpCounter.incr());
+
+
+
+
+
+
+/*
+// -------- 
+
+// data binding or encapsulation
+function closureFunc() {
+	// data
+	var c  = 1; // private - data hiding
+	
+	// methods
+	var mathFunc = function (a,b) {
+		c *= (a+b);
+		return c+2;
+	}
+
+	return mathFunc;
+}
+
+// --------
+
+var f = closureFunc(), 
+	g = closureFunc(), 
+	h = closureFunc();
+
+console.log(f(1,2));
+console.log(g(2,2));
+console.log(h(3,2));
+
+console.log(f(1,2));
+console.log(g(1,2));
+console.log(h(1,2)); */
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
