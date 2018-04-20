@@ -1,45 +1,10 @@
 <html>
 <body>
+	<script type="text/javascript" src="clog.js"></script>
+	<script type="text/javascript" src="vssStack.js"></script>
+	<script type="text/javascript" src="vssQueue.js"></script>
 <script>
 
-	/*
-
-	// call, apply clarity
-	// debug this few times to understand better
-
-	function addTwoNumbers(a, b) {
-		return a+b;
-	}
-
-	var a2 = function() { return addTwoNumbers(arguments); }
-	var b2 = function() { return addTwoNumbers.call(null, arguments); }
-	var c2 = function() { return addTwoNumbers.apply(null, arguments); }
-
-
-	clog(addTwoNumbers(5,3));
-	clog(a2(5,3));
-	clog(c2(5,3));
-
-	*/
-
-
-	var clog = function() { console.log.apply(null, arguments); } // short cut for clog
-	// clog = () => {} // uncomment this if you want clog to work
-	
-
-	// stack implementation as a closure (instead of class)
-	var vssStack = function() {
-		var data = [];
-		var _peek = () => data[data.length-1];
-		var _pop = () => data.pop();
-		var _push = val => { data.push(val); }
-
-		return {
-			peek : _peek,
-			pop  : _pop,
-			push : _push
-		}
-	}
 
 	// example of how programmer voilate the intent
 	// intent: use the data structure represented by aStack, as a stack alone
@@ -56,19 +21,6 @@
 	bStack.push(29); // [ 10, 29 ]
 	clog(bStack.peek()); // prints 29, [ 10, 29 ]
 	clog(bStack.pop()); // prints 29, [ 10 ]
-
-	var vssQueue = function() {
-		var data = [];
-		var _enqueue = val => { data.push(val); }
-		var _dequeue = () => data.shift();
-		var _peek = () => data[0];
-
-		return {
-			enQ : _enqueue,
-			deQ : _dequeue, 
-			peek : _peek
-		}
-	}
 
 	var cQ = vssQueue();
 	cQ.enQ(10); // [ 10 ]

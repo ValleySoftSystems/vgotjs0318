@@ -1,0 +1,42 @@
+<html>
+<body>
+	<script type="text/javascript" src="nested_data.js"></script>
+	<script type="text/javascript" src="printMap.js"></script>
+	<script type="text/javascript">
+		
+		var aggregatedData = new Map();
+
+		function processStatsArray(stats) {
+			stats.forEach(
+					function(obj) {
+						var keys = Object.keys(obj);
+						if (keys.includes("type")) {
+
+							// if the entry doesn't exist, create it
+							// e.g. if "code" occurs for first time, 
+							// create that entry in the map with 
+							// initial value of 0
+							if (! aggregatedData.has(obj.type)) {
+								aggregatedData.set(obj.type, 0);
+							}
+
+							// increments the existing entry count
+							// by the new count
+							var val = aggregatedData.get(obj.type);
+							val += obj.value;
+							aggregatedData.set(obj.type, val);
+						}
+						else if (keys.includes("module")) {
+							processStatsArray(obj.stats);
+						}
+					}
+				);
+		}
+
+		processStatsArray(cdstat);
+
+		aggregatedData.my2String();
+
+	</script>
+</body>
+</html>
