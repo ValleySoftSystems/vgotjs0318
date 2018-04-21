@@ -1,0 +1,32 @@
+
+<html>
+<script src="bakery.js"></script>
+<script>
+
+BAKERY.mgmt.open();
+
+var foo = false;
+
+function balaram(id) {
+	makePayment(id);
+	pickupOrder(id);
+}
+
+function newCake() {
+	foo = !foo;
+	BAKERY.order.newOrder("tresleches", "krsn", balaram, 
+							() => (foo ? "cash" : null));
+}
+
+
+for (var i = 1; i < 10; i++) {
+	window.setTimeout(newCake, 100);	
+	window.setTimeout(newCake, 100);	
+	window.setTimeout(newCake, 100);	
+}
+</script>
+<body>
+</body>
+</html>
+
+
