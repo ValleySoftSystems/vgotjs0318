@@ -1,0 +1,39 @@
+<html>
+<body>
+<script type="text/javascript">
+
+	function printReverse01(list) {
+		for (var i = list.length-1; i >= 0; i--) {
+			console.log(list[i]);
+		}
+	}	
+
+	//printReverse01([10,20,30]);
+
+	function printReverse02(list) {
+		console.log(JSON.stringify(list.reverse()));
+	}	
+
+	//printReverse02([10,20,30]);
+
+	function printReverse03(list, n) {
+		//console.log(`n:${n} > going in`);
+		console.log(list[n]);
+		if (n > 0) {
+			printReverse03(list, n-1);
+		}
+		//console.log(`n:${n} > coming out`);
+	}
+
+	{
+		var l = [10,20,30];
+		printReverse03(l, l.length-1);
+	}
+
+
+
+
+
+</script>
+</body>
+</html>
