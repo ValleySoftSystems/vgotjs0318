@@ -22,23 +22,13 @@ Person.prototype.isAlive = function() {
 }
 
 Person.prototype.toString = function() {
-	var str = (`\t\tName: ${this.name}`);
-	str += (`\n\t\tAge: ${this.age()}`);
-	str += (`\n\t\tGender: ${this.gender}`);
-	str += (`\n\t\tAddress: ${this.address}`);
-	(this.alive) && (str += (`\n\t\tExpired: ${this.doe}`));
+	var str = (`\t\t Name: ${this.name}`);
+	str += (`\n\t\t Age: ${this.age()}`);
+	str += (`\n\t\t Gender: ${this.gender}`);
+	str += (`\n\t\t Address: ${this.address}`);
+	(this.alive) && (str += (`\n\t\t Expired: ${this.doe}`));
 	return str;
 }
-
-
-var p = new Person("Mother Teresa", "1970-01-01", "F", "Calcutta")
-p.changeAddress("Kolkata")
-p.expired("1999-12-22")
-
-console.log(`\np.toString(): [\n${p.toString()}\n\t    ]`)
-console.log(`typeof p: ${typeof p}`)
-console.log(`p instanceof <Person>: ${p instanceof Person}`)
-console.log(`p instanceof <Patient>: ${p instanceof Patient}`)
 
 
 // Prototype Inheritance
@@ -61,18 +51,29 @@ Patient.prototype = Object.assign({}, Person.prototype)
 
 Patient.prototype.toString = function() {
 	var str = Person.prototype.toString.call(this);
-	str += (`\n\t\tBlood Group: ${this.bloodGroup}`);
-	str += (`\n\t\tAilments: ${JSON.stringify(this.ailments)}`);
-	str += (`\n\t\tVitals: ${JSON.stringify(this.vitals)}`);
+	str += (`\n\t\t Blood Group: ${this.bloodGroup}`);
+	str += (`\n\t\t Ailments: ${JSON.stringify(this.ailments)}`);
+	str += (`\n\t\t Vitals: ${JSON.stringify(this.vitals)}`);
 	return str;
 }
+
+
+function dumpObj(obj) {
+	console.log(`\nobj.toString(): [\n${obj.toString()}\n\t\t]`)
+	console.log(`typeof obj: ${typeof obj}`)
+	console.log(`obj instanceof <Person>: ${obj instanceof Person}`)
+	console.log(`obj instanceof <Patient>: ${obj instanceof Patient}`)	
+}
+
+
+var p = new Person("Mother Teresa", "1970-01-01", "F", "Calcutta")
+p.changeAddress("Kolkata")
+p.expired("1999-12-22")
+dumpObj(p)
+
 
 var k = new Patient("Donald Duck", "1970-01-01", "M", "Some Place", 
 					"COLA", ["demented"], ["5'7''", "220lb"])
 k.changeAddress("BlueHouse")
-
-console.log(`\nk.toString(): [\n${k.toString()}\n\t    ]`)
-console.log(`typeof k: ${typeof k}`)
-console.log(`k instanceof <Person>: ${k instanceof Person}`)
-console.log(`k instanceof <Patient>: ${k instanceof Patient}`)
+dumpObj(k)
 
