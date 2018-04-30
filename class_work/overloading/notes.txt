@@ -1,0 +1,10 @@
+
+
+Node JS : is a run time engine for JS
+NPM : node js package (module) manager - primarily ,to download/install packages on your OS
+Require JS: is a module loader - fulfills loading modules into runtime image of your application
+
+Express JS: is a JS based web-app server
+
+
+
