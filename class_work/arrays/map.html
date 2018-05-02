@@ -1,0 +1,37 @@
+<html>
+<body>
+<script>
+/*
+	function array2Obj(arr) {
+		var obj = {};
+		obj.x = arr[0];
+		obj.y = arr[1];
+		return obj;
+	}
+
+	console.log(JSON.stringify(array2Obj([1,2]))); // => { x:1, y:2 }
+*/
+
+	var array2d = [
+					[1,2],
+					[3,4],
+					[5,6]
+					];
+
+
+	console.log("before map: array2d: " + JSON.stringify(array2d));
+	var nudata = array2d.map(arr => {
+								var obj = {};
+								obj.x = arr[0];
+								obj.y = arr[1];
+								return obj;
+							});
+	console.log("after map: array2d: " + JSON.stringify(array2d));
+	console.log("after map: nudata: " + JSON.stringify(nudata));
+
+
+
+
+</script>
+</body>
+</html>

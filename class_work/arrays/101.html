@@ -1,0 +1,93 @@
+<html>
+<body>
+	<script type="text/javascript" src="clog.js"></script>
+	<script type="text/javascript" src="vssStack.js"></script>
+	<script type="text/javascript" src="vssQueue.js"></script>
+<script>
+
+
+	// example of how programmer voilate the intent
+	// intent: use the data structure represented by aStack, as a stack alone
+	// voilation: by directly accessing using an index, stack model is broken
+	var aStack = [];
+	aStack.push(10); // [ 10 ]
+	aStack[29] = 800; // [ 10, null..... , 800 ]
+
+	// here intent is enforced because other methods of Array are not accessible
+	// partly because array data structure is hidden
+	// partly because the methods exposed (returned by the closure) match the intent
+	var bStack = vssStack();
+	bStack.push(10); // [ 10 ]
+	bStack.push(29); // [ 10, 29 ]
+	clog(bStack.peek()); // prints 29, [ 10, 29 ]
+	clog(bStack.pop()); // prints 29, [ 10 ]
+
+	var cQ = vssQueue();
+	cQ.enQ(10); // [ 10 ]
+	cQ.enQ(29); // [ 10, 29 ]
+	clog(cQ.peek()); // prints 10, [ 10, 29 ]
+	clog(cQ.deQ()); // prints 10, [ 29 ]
+
+
+	// Homework
+	// 1. implement a queue without shift method (hint: you can do this with 2 stack, see Irfan Baqui's video)
+	// 2. implement a queue with one stack only - cannot use 2 stacks (hint: use recursion)
+
+	// higher order functions in Array
+
+	// 2 orders: first class functions, higher order functions
+
+	// map, reduce, filter, forEach, every
+
+	var primeArray = [ 1, 2, 3, 5, 7, 11, 13, 17, 23, 31 ];
+
+	console.log("before map: primeArray: " + primeArray);
+	var p2 = primeArray.map( x => 2*x );
+	console.log("after map: primeArray: " + primeArray);
+	console.log("after map: p2: " + p2);
+
+	console.log("");
+
+	console.log("before forEach: primeArray: " + primeArray);
+	primeArray.forEach( x => { x *= 2; } );
+	console.log("after forEach: primeArray: " + primeArray);
+
+	console.log("");
+
+	var braveArray = [ { a: 20 }, { a: 30 }, { a: 40 } ];
+
+	console.log("before forEach: braveArray: " + JSON.stringify(braveArray));
+	braveArray.forEach( x => { x.a *= 2; } );
+	console.log("after forEach: braveArray: " + JSON.stringify(braveArray));
+
+	console.log("");
+
+	console.log("before map: braveArray: " + JSON.stringify(braveArray));
+	newArray = braveArray.map( x => { x.a *= 2; return x; } );
+	console.log("after map: braveArray: " + JSON.stringify(braveArray));
+	console.log("after map: newArray: " + JSON.stringify(newArray));
+
+	console.log("");
+
+	console.log("before map: braveArray: " + JSON.stringify(braveArray));
+	someArray = braveArray.map( x => { y = Object.assign({}, x); y.a *= 2; return y; } );
+	console.log("after map: braveArray: " + JSON.stringify(braveArray));
+	console.log("after map: someArray: " + JSON.stringify(someArray));
+
+	console.log("");
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

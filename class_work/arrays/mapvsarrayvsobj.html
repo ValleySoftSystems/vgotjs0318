@@ -1,0 +1,78 @@
+<html>
+<body>
+<script type="text/javascript" src="printMap.js"></script>
+
+<script type="text/javascript">
+	
+	var obj = {};
+	var arr = [];
+	var map = new Map();
+
+/*
+	function countKey1(key) {
+		if (!obj[key]) {
+			obj[key] = 0;
+		}
+		obj[key] += 1;
+	} */
+
+	function countKey1(key) {
+		if (!arr[key]) {
+			arr[key] = 0;
+		}
+		arr[key] += 1;
+	}
+
+// countKey1("male");
+// countKey1("female");
+// countKey1("male");
+// countKey1("male");
+// countKey1("female");
+// countKey1("male");
+// countKey1("female");
+// countKey1("male");
+// countKey1("female");
+// countKey1("male");
+// countKey1("female");
+// countKey1("male");
+// countKey1("female"); 
+
+//	console.log(JSON.stringify(obj));
+
+//Object.keys(arr).forEach(key => {  console.log(arr[key]); })
+
+
+	function countKey2(key) {
+		if (!map.has(key)) {
+			map.set(key, 0);
+		}
+		var v = map.get(key);
+		v++;
+		map.set(key,v);
+	}
+
+countKey2("male");
+countKey2("female");
+countKey2("male");
+countKey2("male");
+countKey2("female");
+countKey2("male");
+countKey2("female");
+countKey2("male");
+countKey2("female");
+countKey2("male");
+countKey2("female");
+countKey2("male");
+countKey2("female"); 
+
+map.my2String();
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
