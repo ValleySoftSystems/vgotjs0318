@@ -1,0 +1,34 @@
+<html>
+<body>
+	<script type="text/javascript" src="clog.js"></script>
+	<script type="text/javascript" src="vssStack.js"></script>
+	<script type="text/javascript" src="qw2s.js"></script>
+	<script type="text/javascript">
+
+		var q = queueW2Stacks();
+
+		var z = () => { clog(q.toString()); }
+
+		q.enque(10);
+		z();
+		q.enque(20);
+		z();
+		q.enque(30);
+		z();
+		clog(q.deque());
+		z();
+		q.enque(40);
+		z();
+		clog(q.deque());
+		z();
+		q.enque(50);
+		z();
+		clog(q.deque());
+		z();
+		clog(q.deque());
+		z();
+
+
+	</script>
+</body>
+</html>
