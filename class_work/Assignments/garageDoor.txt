@@ -1,0 +1,51 @@
+// Garage door 
+  
+        let state = closed; // other values possible: opened, moving_up, moving_down, stopped_mid_way
+        let currentDirection = none; // other values possible: moving_up, moving_down
+        let previousDirection = none; // other values possible: moving_up, moving_down
+	let flag = none; // other values possible: up, down
+	
+        function onClick() {
+	  if (Nothing is in the way of the garage door && proper signal and code are received) {
+            switch (state) {
+                case closed: 
+                        state = moving_up;
+                        currentDirection = moving_up;
+                        previousDirection = none;
+                        flag = up;
+                        break;
+                case moving_up:
+                        state = stopped_mid_way;
+                        previousDirection = currentDirection;
+                        currentDirection = none;
+                        break;
+                case stopped_mid_way:
+                        if (flag == down) {
+                        	state = moving_up;
+                        	currentDirection = moving_up;
+                        	previousDirection = moving_down;
+                        	flag = up;
+                        } else 	{	// if (flag == up) 
+                        	state = moving_down;
+                        	currentDirection = moving_down;
+                        	previousDirection = moving_up;
+                        	flag = down;
+                        }
+                        break;
+                case moving_down:
+                		state = stopped_mid_way;
+                        previousDirection = currentDirection;
+                        currentDirection = none;
+                        break;
+                case opened:
+                        state = moving_down;
+                        currentDirection = moving_down;
+                        previousDirection = none;
+                        flag = down;
+                        break;
+            }
+	  } 
+	  else {
+	    Message: “Please check your door”;  
+	  }
+        }
