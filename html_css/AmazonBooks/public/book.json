@@ -1,0 +1,74 @@
+{
+	
+	"Children_Books":[
+						{
+							"image": "images/book1.png",
+							"title": "Dog Man and Cat Kid: From the Creator of Captain Underpants (Dog Man #4)",
+							"author": "Dav Pilkey",
+							"diffFormat": [
+											{
+												"format": "Hardcover",
+												"price" : "9",
+												"priceSup":"99",
+												"actualPrice" : "",
+												"primeYN": true
+											},
+											{
+												"format": "Kindle Edition",
+												"price" : "5",
+												"priceSup":"99",
+												"actualPrice" : "",
+												"primeYN": false
+											}	
+									  ],
+							"deliveryDate": "Thursday, May 17"
+						},
+
+						{
+							"image": "images/book2.png",
+							"title": "Percy Jackson and the Olympians 5 Book Paperback Boxed Set (new covers w/poster) (Percy Jackson & the Olympians)",
+							"author": "Rick Riordan and John Rocco",
+							"diffFormat": [
+										{
+											"format": "Paperback",
+											"price" : "25",
+											"priceSup":"93",
+											"actualPrice" : "$35.00",
+											"primeYN": true
+										},
+										{
+											"format": "Hardcover",
+											"price" : "33",
+											"priceSup":"99",
+											"actualPrice": "$89.99",
+											"primeYN": false
+										}	
+									  ],
+							"deliveryDate": "Thursday, May 17"
+						},
+
+						{
+							"image": "images/book3.png",
+							"title": "Harry Potter and the Prisoner of Azkaban: The Illustrated Edition (Harry Potter, Book 3)",
+							"author": "J.K. Rowling and Jim Kay",
+							"diffFormat": [
+										{
+											"format": "Hardcover",
+											"price" : "28",
+											"priceSup":"82",
+											"actualPrice" : "$39.99",
+											"primeYN": true
+										},
+										{
+											"format": "Hardcover",
+											"price" : "115",
+											"priceSup":"87",
+											"actualPrice": "$275.00",
+											"primeYN": true
+										}	
+									  ],
+							"deliveryDate": "Tommorow, May 16"
+						}
+					]
+
+}

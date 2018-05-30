@@ -1,0 +1,18 @@
+{
+				"Breakfast": [
+								{"item":"Dosa", "price":"3"},
+								{"item":"Samosa", "price":"1"}
+							 ],
+
+
+				"Lunch" : [
+							{"item":"Egg Biryani", "price":"13"},
+							{"item":"Fish Curry", "price":"10"}
+						  ],
+
+
+				"Dinner" :[
+							{"item":"Chicken Biryani", "price":"15"},
+							{"item":"Khichdi", "price":"8"}
+						  ]
+}

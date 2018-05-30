@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Books List</title>
+	<link rel="stylesheet" type="text/css" href="bookStyles.css">
+	<script type="text/javascript">
+		function loadPage(url, callbackHandler) {
+			  var xhr = new XMLHttpRequest();
+			  xhr.onreadystatechange = function() {
+			    if (xhr.readyState == 4 && xhr.status == 200) {
+			      var textData = xhr.responseText;
+			      console.log(textData);
+			      callbackHandler(textData);
+			      //window.getElementById("maincontent").innerHTML = textData;
+			    }
+			  };
+			  xhr.open("GET", url, true);
+			  xhr.send();
+			}
+
+			/*function displayResponse(htmlData){
+				window.document.getElementById("maincontent").innerHTML = htmlData;
+			}*/
+
+			function displayBookJson(textData){
+				var jsonData = JSON.parse(textData);
+				var htmlCode = "<div>";
+
+				for(var key in jsonData){
+					if(jsonData.hasOwnProperty(key)){
+						htmlCode += createBookForOne(jsonData[key], key);
+					}
+
+					htmlCode += "</div>";
+				
+					window.document.getElementById("maincontent").innerHTML = htmlCode;	
+				}
+			}
+				
+			function createBookForOne(bookList, heading){
+
+				var htmlForOne = "<div> <p><b>" + heading + "</b></p>";
+
+				for(var i=0; i<bookList.length; i++){
+
+						htmlForOne += "<div class='row'>"
+						
+						/*htmlForOne  += "<div class='bookImg'><img id='bimages' src='" + bookList[i].image + "'></div>				<div class='details'>																				<p><font color=blue>" + bookList[i].title + "</font></p><p><small>by <font color=blue>" + bookList[i].author + "</font></small></p> 														   <p><small><font color=blue>"+ bookList[i].format + "</font></small><br><big>" + bookList[i].price + "</big><br><small>Free Delivery by </small><b>"+ bookList[i].deliveryDate+"</b></p><br></div>"*/
+						
+						htmlForOne  += "<div class='bookImg'><img class='bimages' src='" + bookList[i].image + "'></div> <div class='details'>					<p class='title' ><h2>" + bookList[i].title + "</h2></p>  <p>by <span class='author'>" + bookList[i].author + "</span></p>" + createHtmlForBookFormats(bookList[i].diffFormat) + "<p>Free Delivery by <b>"+ bookList[i].deliveryDate+"</b></p></div>"
+						htmlForOne += "</div><hr>"
+
+					}
+					
+					htmlForOne += "</div>";
+						
+					return htmlForOne;
+
+				}
+
+			function createHtmlForBookFormats(formatsArr) {
+				var html = "";
+				for (var j=0; j<formatsArr.length; j++) {
+						html += "<p class='format'>"+ formatsArr[j].format + "</p> <p class='price'><sup class='currency'>$</sup>" + formatsArr[j].price +"<sup class='priceSup'>"+formatsArr[j].priceSup +"</sup> "  + checkActualPrice(formatsArr[j].actualPrice) + checkPrime(formatsArr[j].primeYN) + "</p><hr>"
+					}
+				return html;
+			}
+
+
+			function checkActualPrice(actualPrice){
+				var htmlPrice = "";
+					if(actualPrice){
+						htmlPrice += "<s class='strike'> " + actualPrice + "</s> "
+					}
+				return htmlPrice;	
+			}
+
+			function checkPrime(isPrime){
+				var htmlPrime = "";
+				if(isPrime){
+					htmlPrime += "<span class='check'>&#10003;</span> <span class='prime'>prime</span>" 
+					//htmlPrime += "<span class='prime'>prime</span>" 
+				}
+				return 	htmlPrime;
+			}
+			
+
+	</script>
+</head>
+<body>
+	<div class="top">
+		<div class="header">
+			<p>Books</p>
+			<ul>
+				<li><a href="#book" onclick="loadPage('book.json', displayBookJson);">Children's Book</a></li><br>
+				<li><a href="">Arts and Music</a></li> 
+			</ul>
+		</div>
+
+		<div id="maincontent">
+		
+			<!-- <div id="bookImg">
+				
+			</div>
+
+			<div id="details">
+				
+			</div>
+ -->
+		</div>
+
+		
+		<div class="footer">Copywright@2018 All Rights Reserved	</div>
+
+
+	</div>
+
+
+</body>
+</html>

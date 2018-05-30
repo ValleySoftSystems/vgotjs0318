@@ -1,0 +1,58 @@
+body{
+	background-color: #FFDEAD;
+}
+
+
+.top{
+	margin-left: 300px;
+	margin-right: 300px;
+}
+
+
+.header > ul li{
+	display: inline;
+	width: 25%;
+	/*border: 1px solid orange;*/
+}
+
+.footer{
+	height: 100px;
+}
+
+/*.header{
+	background-color: orange;
+	display: block;
+	#FAE5D3
+}*/
+
+.header .icon {
+  display: none;
+}
+
+.header{
+	float: right;
+	font-size: 16px;
+	font-style: bolder;
+	font-family: arial, verdana;
+	background-color: #B22222;
+}
+
+.header > ul li a{
+	color: white;
+	text-decoration: none;
+}
+
+
+.content{
+clear: both;
+}
+
+.pcls{
+	border: 1px solid #D98880;
+	width: 70%;
+	display: inline-block;
+}
+/*.spancls{
+	width: 170px;
+	height: 30px;
+}*/

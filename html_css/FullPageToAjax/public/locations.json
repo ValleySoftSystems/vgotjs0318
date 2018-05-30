@@ -1,0 +1,29 @@
+{
+	"Locations": 
+	[
+		{
+			"street" : "3939 Bidwell Dr",
+		 	"city": "Fremont",
+		 	"zipcode": "92538"	
+		},
+
+		{	
+			"street" : "3349 Leslie St",
+		 	"city": "Fremont",
+		 	"zipcode": "93462"	
+		},
+
+		{
+			"street" : "4555 Rosewood Dr",
+		 	"city": "Pleasanton",
+		 	"zipcode": "93245"	
+		},
+
+		{	
+			"street" : "38262 Fremont Blvd",
+		 	"city": "Fremont",
+		 	"zipcode": "96500"	
+		}
+    ]
+
+}

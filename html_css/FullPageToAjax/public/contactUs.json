@@ -1,0 +1,44 @@
+{
+	"California":[
+			{
+				"street" : "2760 Aborn Rd",
+			 	"city": "San Jose",
+			 	"zipcode": "95121",
+			 	"contactNumber": "408-528-9422"	
+			},
+			{
+				"street" : "2798 El Camino Real",
+			 	"city": "Santa Clara",
+			 	"zipcode": "95051",
+			 	"contactNumber": "408-247-9264"	
+			},
+			{
+				"street" : "39447 Fremont Blvd",
+			 	"city": "Fremont",
+			 	"zipcode": "92538",
+			 	"contactNumber": "510-226-6320"	
+			},
+			{
+				"street" : "6608 Dublin Blvd",
+			 	"city": "Dublin",
+			 	"zipcode": "94568",
+			 	"contactNumber": "925-829-8398"	
+			}
+		],
+
+		"Texas":[
+			{
+				"street" : "9405 N Mc Arthur Blvd ",
+			 	"city": "Irving",
+			 	"zipcode": "75063",
+			 	"contactNumber": "469-399-6233"	
+			},
+			{
+				"street" : "8500 Ohio Dr",
+			 	"city": "Plano",
+			 	"zipcode": "75024",
+			 	"contactNumber": "214-308-9046"	
+			}
+		]
+
+}

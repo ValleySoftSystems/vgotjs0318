@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Books List</title>
+	<link rel="stylesheet" type="text/css" href="bookStyles.css">
+	<script type="text/javascript">
+		function loadPage(url, callbackHandler) {
+			  var xhr = new XMLHttpRequest();
+			  xhr.onreadystatechange = function() {
+			    if (xhr.readyState == 4 && xhr.status == 200) {
+			      var textData = xhr.responseText;
+			      console.log(textData);
+			      callbackHandler(textData);
+			      //window.getElementById("maincontent").innerHTML = textData;
+			    }
+			  };
+			  xhr.open("GET", url, true);
+			  xhr.send();
+			}
+
+			/*function displayResponse(htmlData){
+				window.document.getElementById("maincontent").innerHTML = htmlData;
+			}*/
+
+			function displayBookJson(textData){
+				var jsonData = JSON.parse(textData);
+				var htmlCode = "<div>";
+
+				for(var key in jsonData){
+					if(jsonData.hasOwnProperty(key)){
+						htmlCode += createBookForOne(jsonData[key], key);
+					}
+
+				htmlCode += "</div>";
+				
+				window.document.getElementById("maincontent").innerHTML = htmlCode;	
+			}
+
+			function createBookForOne(bookList, heading){
+				var holder = "";
+
+				var htmlForOne = "<div> <p><b>" + heading + "</b></p>";
+
+				for(var i=0; i<bookList.length; i++){
+
+						htmlForOne += "<div class='row'>"
+						
+						htmlForOne  += "<div class='bookImg'><img id='bimages' src='" + bookList[i].image + "'> </div><div class='details'><p><font color=blue>" + bookList[i].title + "</font></p><p><small>by <font color=blue>" + bookList[i].author + "</font></small></p><p><small><font color=blue>"+ bookList[i].format + "</font></small><br><big>" + bookList[i].price + "</big><br><small>Free Delivery by </small><b>"+ bookList[i].deliveryDate+"</b></p><br></div>"
+						
+						htmlForOne += "</div><hr>"
+
+					}
+					
+					htmlForOne += "</div>";
+						
+					return htmlForOne;
+
+				}
+
+			}
+
+	</script>
+</head>
+<body>
+	<div class="top">
+		<div class="header">
+			<p>Books</p>
+			<ul>
+				<li><a href="#book" onclick="loadPage('book.json', displayBookJson);">Children's Book</a></li><br>
+				<li><a href="">Arts and Music</a></li> 
+			</ul>
+		</div>
+
+		<div id="maincontent">
+		
+			<!-- <div id="bookImg">
+				
+			</div>
+
+			<div id="details">
+				
+			</div>
+ -->
+		</div>
+
+		
+		<div class="footer">Copywright@2018 All Rights Reserved	</div>
+
+
+	</div>
+
+
+</body>
+</html>
+
+
+<!-- JSON
+{
+	
+	"Children_Books":[
+						{
+							"image": "images/book1.png",
+							"title": "Dog Man and Cat Kid: From the Creator of Captain Underpants (Dog Man #4)",
+							"author": "Dav Pilkey",
+							"format": "Hardcover",
+							"price": "$9.99",
+							"deliveryDate": "Thursday, May 17"
+						},
+
+						{
+							"image": "images/book2.png",
+							"title": "Percy Jackson and the Olympians 5 Book Paperback Boxed Set (new covers w/poster) (Percy Jackson & the Olympians)",
+							"author": "Rick Riordan and John Rocco",
+							"format": "Paperback",
+							"price": "$25.93",
+							"deliveryDate": "Thursday, May 17"
+						},
+
+						{
+							"image": "images/book3.png",
+							"title": "Harry Potter and the Prisoner of Azkaban: The Illustrated Edition (Harry Potter, Book 3)",
+							"author": "J.K. Rowling and Jim Kay",
+							"format": "Hardcover",
+							"price": "$28.82",
+							"deliveryDate": "Tommorow, May 16"
+						}
+					]
+
+}
+
+
+ -->
