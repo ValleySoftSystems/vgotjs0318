@@ -1,0 +1,17 @@
+
+
+.header > ul li{
+	display: inline;
+	width: 50%;
+	border: 1px solid green;
+}
+
+.footer{
+	height: 100px;
+}
+
+/*.header{
+	background-color: orange;
+	display: block;
+}*/
+

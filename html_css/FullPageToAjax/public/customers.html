@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Customers Data</title>
+</head>
+<body>
+	<h3>Customers Information</h3>	
+
+<form name="myForm" action="/addContact" method="POST">
+ 	
+ First Name : <input type="text" name="firstname" id="firstname"></input>&emsp;&emsp;
+
+ Last Name : <input type="text" name="lastname" ></input>
+ <br/><br/>
+
+ Email : <input type="email" name="email"></input>
+ <br/><br/>
+
+ Gender: <span><input type="radio" name="gender" value="female"></input>Female</span> &nbsp; <span><input type="radio" name="gender" value="male"></input>Male</span>
+ <br/><br/>
+
+Birth Date:
+  <input type="date" name="bday"></input>
+ <br/><br/> 
+ Phone Number: <input type="text" name="phonenumber"></input>&emsp;&emsp;
+
+ <span>Language:</span>&nbsp;<span><input type="checkbox" name="english" value="english"></input>English</span> &nbsp;
+ 					   <span><input type="checkbox" name="hindi" value="hindi"></input>Hindi</span>&nbsp;
+ 					   <span><input type="checkbox" name="chinese" value="chinese"></input>Chinese</span>&nbsp;
+ 					   <span><input type="checkbox" name="marathi" value="marathi"></input>Marathi</span>
+
+<br><br>
+Address: <input type="text" name="address" value=""></input><br>
+Address Line 2: <input type="text" name="address2" value=""></input><br>
+City: <input type="text" name="city" value="">&emsp; <span>State:<select name="state">
+																	  <option value="CA">CA</option>
+																	  <option value="AZ">Arizona</option>
+																	  <option value="CO">Colorado</option>
+																	  <option value="FL">Florida</option>
+																	  <option value="MS">Mississippi</option>
+																	  <option value="NY">New York</option>
+																	  <option value="TX">Texas</option>
+																	  <option value="WA">Washington</option>
+																</select></span>
+
+
+<br><br>
+Select Your favorite dishes:<br><select multiple>
+  <option value="volvo">Chicken Biryani</option>
+  <option value="saab">Veg Biryani</option>
+  <option value="opel">Chole Bhatura</option>
+  <option value="audi">Samosa</option>
+  <option value="audi">Masala Dosa</option>
+  <option value="audi">Pani Puri</option>
+  <option value="audi">Tawa Fish</option>
+</select>
+<br><br>	
+Give your feedback here:<br>
+<textarea name="feedback" style="width:300px; height:100px">
+
+</textarea>
+<br>
+<input type="button" value="Submit" onclick="submitMyForm()"></input>
+<input type="hidden" name="id" value="" ></input>
+<input type="reset"></input>
+<br><br>
+</form>
+
+
+
+
+</body>
+</html>
